@@ -1,3 +1,7 @@
+## This is a fork of the Complete Intro to Computer Science repo by Brian Holt
+
+---
+
 <h1 align="center">Complete Intro to Computer Science: Algorithms and Data Structures</h1> <br>
 
 <p align="center">
