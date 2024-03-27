@@ -26,3 +26,17 @@ The **content** is this repo is licensed under the CC-BY-NC-4.0 license.
 [site]: https://btholt.github.io/complete-intro-to-computer-science
 [fem]: https://www.frontendmasters.com
 [other-repo]: https://github.com/btholt/complete-intro-to-computer-science
+
+## Course content
+
+- Introduction
+- Algorithm Analysis
+- Iterative Sorts
+- Recursive Sorts
+- Non-Comparison Sorts
+- Binary Search
+- Lists
+- Trees
+- Applying Tree Algorithms
+- Other Data Structures
+- Wrapping Up
