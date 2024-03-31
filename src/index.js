@@ -1,9 +1,9 @@
-import React from "react";
-import { render } from "react-dom";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import React from 'react'
+import { render } from 'react-dom'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 
-import Sort from "./Sort";
-import Tree from "./Tree";
+import Sort from './Sort'
+import Tree from './Tree'
 
 const App = () => {
   return (
@@ -29,7 +29,7 @@ const App = () => {
         </Switch>
       </div>
     </Router>
-  );
-};
+  )
+}
 
-render(<App />, document.getElementById("app"));
+render(<App />, document.getElementById('app'))
