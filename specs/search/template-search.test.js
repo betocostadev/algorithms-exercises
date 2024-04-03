@@ -1,41 +1,22 @@
+// Search Template
+// Do not write your code here, copy this file.
+
 // for both exercises, the id of the object you're searching for is given to you
 // as integer. return the whole object that you're looking for
 //
 // it's up to you what to return if the object isn't found (we're not testing that)
 
 function linearSearch(id, array) {
-  for (let i = 0; i < array.length; i++) {
-    if (array[i].id === id) return array[i]
-  }
-  return void 0
-  // return array.find((item) => item.id === id)
+  // code goes here
 }
 
 function binarySearch(id, array) {
   // code goes here
-  let min = 0
-  let max = array.length - 1
-  let index, element
-
-  while (min <= max) {
-    index = Math.floor((min + max) / 2)
-    element = array[index]
-
-    if (element.id < id) {
-      min = index + 1
-    } else if (element.id > id) {
-      min = index - 1
-    } else {
-      return element
-    }
-  }
-
-  return undefined
 }
 
 // unit tests
 // do not modify the below code
-test('linear search', function () {
+test.skip('linear search', function () {
   const lookingFor = { id: 5, name: 'Brian' }
   expect(
     linearSearch(5, [
