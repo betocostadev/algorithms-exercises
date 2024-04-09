@@ -1,3 +1,6 @@
+// Array list template
+// Do not write your code here, copy this file.
+
 /*
   ArrayList
   
@@ -19,56 +22,11 @@
 
 class ArrayList {
   // code goes here
-  constructor() {
-    // instantiate all variables
-    this.data = {}
-    this.length = 0
-  }
-
-  peek() {
-    // Returns the entire data { 0: 'a', 1: 'b' ...}
-    return this.data
-  }
-
-  push(value) {
-    // Add item to the end
-    this.data[this.length] = value
-    this.length++
-  }
-
-  pop() {
-    // Remove the last item and returns it
-    if (this.length < 1) return 0
-    const item = this.data[this.length - 1]
-    delete this.data[this.length - 1]
-    this.length--
-    return item
-  }
-
-  get(index) {
-    // Returns that item
-    return this.data[index]
-  }
-
-  delete(index) {
-    // Removes the item, and collapses the array
-    const item = this.data[index]
-    this._collapseTo(index)
-    return item
-  }
-
-  _collapseTo(index) {
-    for (let i = index; i < this.length; i++) {
-      this.data[i] = this.data[i + 1]
-    }
-    delete this.data[this.length - 1]
-    this.length--
-  }
 }
 
 // unit tests
 // do not modify the below code
-describe('ArrayList', function () {
+describe.skip('Template ArrayList', function () {
   const range = (length) =>
     Array.apply(null, { length: length }).map(Number.call, Number)
   const abcRange = (length) =>
@@ -86,13 +44,6 @@ describe('ArrayList', function () {
   test('push', () => {
     abcRange(26).map((character) => list.push(character))
     expect(list.length).toEqual(26)
-  })
-
-  test('peek', () => {
-    list.push('first')
-    list.push('second')
-    list.push('third')
-    expect(list.peek()).toEqual({ 0: 'first', 1: 'second', 2: 'third' })
   })
 
   test('pop', () => {
