@@ -1,75 +1,97 @@
+// Linked list template
+// Do not write your code here, copy this file.
+
 /*
-  ArrayList
+  LinkedList
   
-  We are going to approximate an implementation of ArrayList. In JavaScript terms, that means we are
-  going to implement an array using objects. You should not use arrays at all in this exercise, just
-  objects. Make a class (or constructor function; something you can call new on) called ArrayList.
-  ArrayList should have the following properties (in addition to whatever properties you create):
+  Name your class / constructor (something you can call new on) LinkedList
   
-  length - integer  - How many elements in the array
+  LinkedList is made by making nodes that have two properties, the value that's being stored and a pointer to
+  the next node in the list. The LinkedList then keep track of the head and usually the tail (I would suggest
+  keeping track of the tail because it makes pop really easy.) As you may have notice, the unit tests are the
+  same as the ArrayList; the interface of the two are exactly the same and should make no difference to the
+  consumer of the data structure.
+  
+  length - integer  - How many elements in the list
   push   - function - accepts a value and adds to the end of the list
   pop    - function - removes the last value in the list and returns it
   get    - function - accepts an index and returns the value at that position
   delete - function - accepts an index, removes value from list, collapses, 
                       and returns removed value
+                      
+  I would suggest making a second class, a Node class. However that's up to you how you implement it. A Node
+  has two properties, value and next.
 
   As always, you can change describe to xdescribe to prevent the unit tests from running while
   you work
 */
 
-class ArrayList {
-  // code goes here
+class LinkedList {
   constructor() {
-    // instantiate all variables
-    this.data = {}
+    this.head = null
+    this.tail = null
     this.length = 0
   }
-
-  peek() {
-    // Returns the entire data { 0: 'a', 1: 'b' ...}
-    return this.data
-  }
-
   push(value) {
-    // Add item to the end
-    this.data[this.length] = value
+    const node = new Node(value)
     this.length++
-  }
-
-  pop() {
-    // Remove the last item and returns it
-    // In this case we are just deleting the item directly because it's the last, but we could use the delete function
-    if (this.length < 1) return 0
-    const item = this.data[this.length - 1]
-    delete this.data[this.length - 1]
-    this.length--
-    return item
-  }
-
-  get(index) {
-    // Returns that item
-    return this.data[index]
-  }
-
-  delete(index) {
-    // Removes the item, and collapses the array
-    const item = this.data[index]
-    this._collapseTo(index)
-    return item
-  }
-
-  _collapseTo(index) {
-    for (let i = index; i < this.length; i++) {
-      this.data[i] = this.data[i + 1]
+    if (!this.head) {
+      this.head = node
+    } else {
+      this.tail.next = node
     }
-    delete this.data[this.length - 1]
+    this.tail = node
+  }
+  pop() {
+    return this.delete(this.length - 1)
+  }
+  _find(index) {
+    if (index >= this.length) return null
+    let current = this.head
+    for (let i = 0; i < index; i++) {
+      current = current.next
+    }
+
+    return current
+  }
+  get(index) {
+    const node = this._find(index)
+    if (!node) return void 0
+    return node.value
+  }
+  delete(index) {
+    if (index === 0) {
+      const head = this.head
+      if (head) {
+        this.head = head.next
+      } else {
+        this.head = null
+        this.tail = null
+      }
+      this.length--
+      return head.value
+    }
+
+    const node = this._find(index - 1)
+    const excise = node.next
+    if (!excise) return null
+    node.next = excise.next
+    if (!node.next) this.tail = node.next
     this.length--
+    return excise.value
+  }
+}
+
+class Node {
+  constructor(value) {
+    this.value = value
+    this.next = null
   }
 }
 
 // unit tests
 // do not modify the below code
-describe('ArrayList', function () {
+describe('LinkedList', function () {
   const range = (length) =>
     Array.apply(null, { length: length }).map(Number.call, Number)
   const abcRange = (length) =>
@@ -77,23 +99,16 @@ describe('ArrayList', function () {
   let list
 
   beforeEach(() => {
-    list = new ArrayList()
+    list = new LinkedList()
   })
 
   test('constructor', () => {
-    expect(list).toEqual(expect.any(ArrayList))
+    expect(list).toEqual(expect.any(LinkedList))
   })
 
   test('push', () => {
     abcRange(26).map((character) => list.push(character))
     expect(list.length).toEqual(26)
-  })
-
-  test('peek', () => {
-    list.push('first')
-    list.push('second')
-    list.push('third')
-    expect(list.peek()).toEqual({ 0: 'first', 1: 'second', 2: 'third' })
   })
 
   test('pop', () => {
