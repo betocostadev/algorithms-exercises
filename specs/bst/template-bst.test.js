@@ -1,3 +1,6 @@
+// Binary Search Tree template
+// Do not write your code here, copy this file.
+
 /*
 
 Binary Search Tree!
@@ -18,56 +21,17 @@ right - Node/object - the right node which itself may be another tree
 
 class Tree {
   // code goes here
-  constructor() {
-    this.root = null
-  }
-
-  add(value) {
-    // First check it it's the first node
-    if (this.root === null) {
-      this.root = new Node(value)
-    } else {
-      let current = this.root
-      while (true) {
-        if (current.value > value) {
-          // Go left
-          if (current.left) {
-            current = current.left
-          } else {
-            current.left = new Node(value)
-            break
-          }
-        } else {
-          // Go right
-          if (current.right) {
-            current = current.right
-          } else {
-            current.right = new Node(value)
-            break
-          }
-        }
-      }
-    }
-    return this
-  }
-
-  toObject() {
-    return this.root
-  }
 }
 
 // you might consider using a Node class too
-class Node {
-  constructor(value) {
-    this.value = value
-    this.left = null
-    this.right = null
-  }
-}
+// class Node {
+//   // code maybe goes here
+// It is possible to use a Node and add an add method to the Node class. Then, add recursively.
+// }
 
 // unit tests
 // do not modify the below code
-describe('Binary Search Tree', function () {
+describe.skip('Template Binary Search Tree', function () {
   it('creates a correct tree', () => {
     const nums = [3, 7, 4, 6, 5, 1, 10, 2, 9, 8]
     const tree = new Tree()
