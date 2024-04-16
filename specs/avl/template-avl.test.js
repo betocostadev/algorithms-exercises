@@ -1,3 +1,6 @@
+// AVL Tree template
+// Do not write your code here, copy this file.
+
 /*
   AVL Tree
   
@@ -26,75 +29,15 @@ class Tree {
   constructor() {
     this.root = null
   }
-
-  add(value) {
-    if (!this.root) {
-      this.root = new Node(value)
-    } else {
-      this.root.add(value)
-    }
-  }
-
-  toObject() {
-    return this.root
-  }
 }
 
-// the Add logic will go on the Node class
 class Node {
   // code also goes here
-  constructor(value = null) {
-    this.value = value
-    this.left = null
-    this.right = null
-    this.height = 1
-  }
-
-  add(value) {
-    if (value < this.value) {
-      if (this.left) {
-        this.left.add(value)
-      } else {
-        this.left = new Node(value)
-      }
-    } else {
-      if (this.right) {
-        this.right.add(value)
-      } else {
-        this.right = new Node(value)
-      }
-    }
-    this.balance()
-  }
-
-  balance() {
-    // ask if is this node out of balance
-    // if not out of balance, do nothing
-    // if it is ouf of balance, do I need to single or double rotate
-    // if single, just call rotate on self
-    // if double, call rotate on child then on self
-  }
-
-  rotateRR() {
-    // rotate
-    this.right.updateInNewLocation()
-    this.updateInNewLocation()
-  }
-
-  rotateLL() {
-    // rotate
-    this.left.updateInNewLocation()
-    this.updateInNewLocation()
-  }
-
-  updateInNewLocation() {
-    // Calculate the new height
-  }
 }
 
 // unit tests
 // do not modify the below code
-describe.skip('AVL Tree', function () {
+describe.skip('Template AVL Tree', function () {
   test('creates a correct tree', () => {
     const nums = [3, 7, 4, 6, 5, 1, 10, 2, 9, 8]
     const tree = new Tree()
