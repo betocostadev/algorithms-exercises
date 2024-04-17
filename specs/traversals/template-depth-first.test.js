@@ -1,33 +1,25 @@
+// Tree Traversals: Depth First Template
+// Depth First because we go as deep as possible down the tree before we go wide.
+// Do not write your code here, copy this file.
+
+// preorder - root, left, right
 const preorderTraverse = (node, array) => {
   // code goes here
-  if (!node) return array
-  array.push(node.value)
-  array = preorderTraverse(node.left, array)
-  array = preorderTraverse(node.right, array)
-  return array
 }
 
+// inorder - left, root, right
 const inorderTraverse = (node, array) => {
   // code goes here
-  if (!node) return array
-  array = inorderTraverse(node.left, array)
-  array.push(node.value)
-  array = inorderTraverse(node.right, array)
-  return array
 }
 
+// postorder - left, right, root
 const postorderTraverse = (node, array) => {
   // code goes here
-  if (!node) return array
-  array = postorderTraverse(node.left, array)
-  array = postorderTraverse(node.right, array)
-  array.push(node.value)
-  return array
 }
 
 // unit tests
 // do not modify the below code
-describe('depth-first traversals', function () {
+test.skip('Template depth-first traversals', function () {
   const tree = {
     value: 8,
     left: {
