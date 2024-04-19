@@ -16,7 +16,7 @@ function binarySearch(id, array) {
 
 // unit tests
 // do not modify the below code
-test.skip('linear search', function () {
+test.skip('template linear search', function () {
   const lookingFor = { id: 5, name: 'Brian' }
   expect(
     linearSearch(5, [
