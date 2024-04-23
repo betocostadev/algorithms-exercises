@@ -16,7 +16,7 @@ function binarySearch(id, array) {
 
 // unit tests
 // do not modify the below code
-test.skip('template linear search', function () {
+test.skip('Template linear search', function () {
   const lookingFor = { id: 5, name: 'Brian' }
   expect(
     linearSearch(5, [
@@ -38,7 +38,7 @@ test.skip('template linear search', function () {
   ).toBe(lookingFor)
 })
 
-test.skip('binary search', function () {
+test.skip('Template binary search', function () {
   const lookingFor = { id: 23, name: 'Brian' }
   expect(
     binarySearch(23, [

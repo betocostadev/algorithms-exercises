@@ -1,8 +1,10 @@
+// Heap-Sort Template
+// Do not write your code here, copy this file.
+
 // Heap-sort is an array that represents a tree like data structure. It is a complete binary tree.
 // Heap sort is a comparison-based sorting algorithm. It is part of the selection sort family.
 // It is similar to selection sort, where we first find the maximum element and place the maximum element at the end.
 // We repeat the same process for the remaining elements.
-// Do not write your code here, copy this file.
 
 /*
   

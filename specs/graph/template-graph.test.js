@@ -1,3 +1,10 @@
+// Graph Template
+// Do not write your code here, copy this file.
+
+// Graphs are a data structure that consists of a finite set of nodes and edges.
+// There are many different types of graphs, but the two most common ones you'll see are directed and undirected graphs.
+// In a directed graph, edges have direction. In an undirected graph, edges do not have direction.
+
 // you work for a professional social network. in this social network, a professional
 // can follow other people to see their updates (think Twitter for professionals.)
 // write a function that finds the job `title` that shows up most frequently given
@@ -27,49 +34,11 @@ const { getUser } = require('./jobs')
 
 const findMostCommonTitle = (myId, degreesOfSeparation) => {
   // code goes here
-  let queue = [myId]
-  let seen = new Set(queue)
-  const jobs = {}
-
-  for (let i = 0; i <= degreesOfSeparation; i++) {
-    const newQueue = []
-    while (queue.length) {
-      const user = getUser(queue.shift())
-
-      // queue up the next iteration
-      for (let j = 0; j < user.connections.length; j++) {
-        const connection = user.connections[j]
-        if (!seen.has(connection)) {
-          newQueue.push(connection)
-          seen.add(connection)
-        }
-      }
-
-      // count the jobs
-      jobs[user.title] = jobs[user.title] ? jobs[user.title] + 1 : 1
-    }
-    queue = newQueue
-  }
-
-  const jobKeys = Object.keys(jobs)
-
-  let biggestNumber = jobs[jobKeys[0]]
-  let jobName = jobKeys[0]
-
-  for (let i = 1; i < jobKeys.length; i++) {
-    const currentJob = jobKeys[i]
-    if (jobs[currentJob] > biggestNumber) {
-      jobName = currentJob
-      biggestNumber = jobs[currentJob]
-    }
-  }
-
-  return jobName
 }
 
 // unit tests
 // do not modify the below code
-describe('findMostCommonTitle', function () {
+describe.skip('Template findMostCommonTitle', function () {
   // the getUser function and data comes from this CodePen: https://codepen.io/btholt/pen/NXJGwa?editors=0010
   test('user 30 with 2 degrees of separation', () => {
     expect(findMostCommonTitle(30, 2)).toBe('Librarian')
@@ -86,7 +55,7 @@ describe('findMostCommonTitle', function () {
   })
 })
 
-describe('extra credit', function () {
+describe.skip('Template extra credit', function () {
   test("user 1 with 7 degrees of separation – this will traverse every user that's followed by someone else. five users are unfollowed", () => {
     expect(findMostCommonTitle(1, 7)).toBe('Geological Engineer')
   })
