@@ -1,3 +1,19 @@
+// Tries Template
+// Do not write your code here, copy this file.
+
+// Tries - reTRIEve
+//     a - [various children]
+//   /
+// b - o - s - t - o - n
+//       \
+//         i - s - e
+
+// Tries are a type of tree, but they are not binary trees.
+// Their structure is a bit different. A node in a trie represents a single character.
+// The path from the root to the node represents a string.
+// The strings that are represented by traversing a trie from the root to a leaf are
+// all of the strings that have the prefix that the path spells.
+
 // in order to pass the unit tests, you will need to create a function called createTrie that accepts a list of strings
 // as a parameter and returns an object with a method on it called "`complete`. complete is a method that when called
 // with a string will return an array of up to length three that are autocompleted suggestions of how to finish that string.
@@ -16,70 +32,8 @@ class Node {
   // you don't have to use this data structure, this is just how I did it
   // you'll almost definitely need more methods than this and a constructor
   // and instance variables
-  constructor(string) {
-    this.children = []
-    this.terminus = false
-    this.value = string[0]
-
-    if (string.length > 1) {
-      this.children.push(new Node(string.substr(1)))
-    } else {
-      this.terminus = true
-    }
-  }
-
-  add(string) {
-    const value = string[0]
-    const next = string.substr(1)
-
-    for (let i = 0; i < this.children.length; i++) {
-      const child = this.children[i]
-      if (child.value === value) {
-        if (next) {
-          child.add(next)
-        } else {
-          child.terminus = true
-        }
-        return
-      }
-    }
-
-    this.children.push(new Node(string))
-  }
-
-  _complete(search, built, suggestions) {
-    if (suggestions.length >= 3 || (search && search[0] !== this.value)) {
-      return suggestions
-    }
-
-    if (this.terminus) {
-      suggestions.push(`${built}${this.value}`)
-    }
-
-    for (let i = 0; i < this.children.length; i++) {
-      const child = this.children[i]
-      suggestions = child._complete(
-        search.substr(1),
-        `${built}${this.value}`,
-        suggestions
-      )
-    }
-
-    // console.log(suggestions)
-    return suggestions
-  }
-
   complete(string) {
-    let completions = []
-
-    for (let i = 0; i < this.children.length; i++) {
-      const child = this.children[i]
-      completions = completions.concat(child._complete(string, '', []))
-    }
-
-    // console.log(completions)
-
-    return completions
+    return []
   }
 }
 
@@ -88,17 +42,13 @@ const createTrie = (words) => {
   const root = new Node('')
 
   // more code should go here
-  for (let i = 0; i < words.length; i++) {
-    const word = words[i]
-    root.add(word.toLowerCase())
-  }
 
   return root
 }
 
 // unit tests
 // do not modify the below code
-describe('tries', function () {
+describe.skip('tries', function () {
   test('dataset of 10 – san', () => {
     const root = createTrie(CITY_NAMES.slice(0, 10))
     const completions = root.complete('san')
@@ -197,7 +147,7 @@ describe('tries', function () {
   })
 })
 
-describe.skip('edge cases', () => {
+describe.skip('Template Tries edge cases', () => {
   test('handle whole words – seattle', () => {
     const root = createTrie(CITY_NAMES.slice(0, 30))
     const completions = root.complete('seattle')
